@@ -5,13 +5,13 @@ from langchain.schema import HumanMessage, SystemMessage, AIMessage
 # from openai import AzureChatOpenAI
 from langchain_openai import AzureChatOpenAI
 import os
-# import dotenv
-# dotenv.load_dotenv()
+import dotenv
+dotenv.load_dotenv()
 
 # Initialize the Azure OpenAI client
 llm = AzureChatOpenAI(
-        azure_endpoint="https://azureopenai16.openai.azure.com/",
-        api_key="75db73a3b9da40b0b6e0e98273a6029f",  
+        azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+        api_key=os.getenv("AZURE_OPENAI_API_KEY"),  
         api_version="2024-05-01-preview",
         deployment_name="gpt35turbo",
         temperature=0.5
